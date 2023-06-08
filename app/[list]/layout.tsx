@@ -32,7 +32,7 @@ export default async function ListLayout({
 
   return (
     <div className="pb-6">
-      <header className="flex h-16 items-center  border-b bg-muted shadow-md sm:h-20">
+      <header className="flex h-16 items-center  border-b bg-background shadow-md sm:h-20">
         <div className="mx-auto flex max-w-6xl grow items-center justify-between pl-4 pr-2 sm:px-8">
           <h1 className="text-xl font-semibold">{list.title}</h1>
           <div className="">

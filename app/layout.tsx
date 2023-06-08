@@ -24,7 +24,7 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" href="/favicon.png" />
       </head>
-      <body className={cn('h-full antialiased', inter.className)}>
+      <body className={cn('h-full bg-muted antialiased', inter.className)}>
         <Providers>{children}</Providers>
       </body>
     </html>

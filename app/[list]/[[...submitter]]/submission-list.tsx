@@ -20,8 +20,8 @@ export function SubmissionList({ submissions }: SubmissionListProps) {
     <Card>
       <Table>
         <TableHeader>
-          <TableRow className="bg-muted">
-            <TableHead className="font-semibold text-foreground">
+          <TableRow className="bg-secondary">
+            <TableHead className="py-4 font-semibold text-foreground">
               Name des Kindes
             </TableHead>
             <TableHead className="font-semibold text-foreground">
