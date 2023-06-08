@@ -1,5 +1,5 @@
+import { Icon } from "@/components/icons";
 import { cn } from "@/lib/utils";
-import { List } from "lucide-react";
 import { Roboto_Slab } from "next/font/google";
 
 const robotoSlab = Roboto_Slab({ subsets: ["latin"] });
@@ -15,7 +15,7 @@ export default function Home() {
       <h1 className="text-5xl sm:text-7xl flex items-end gap-x-4">
         <span>Liste</span>
         <span className="translate-y-1 sm:translate-y-2">
-          <List className="h-12 sm:h-20 w-12 sm:w-20" />
+          <Icon.List className="h-12 sm:h-20 w-12 sm:w-20" />
         </span>
         <span>Live</span>
       </h1>
