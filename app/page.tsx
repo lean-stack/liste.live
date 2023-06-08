@@ -12,14 +12,14 @@ export default function Home() {
         robotoSlab.className
       )}
     >
-      <h1 className="text-7xl flex items-end gap-x-4">
-        Liste{" "}
-        <span className="translate-y-3">
-          <List className="h-20 w-16" />
-        </span>{" "}
-        Live
+      <h1 className="text-5xl sm:text-7xl flex items-end gap-x-4">
+        <span>Liste</span>
+        <span className="translate-y-1 sm:translate-y-2">
+          <List className="h-12 sm:h-20 w-12 sm:w-20" />
+        </span>
+        <span>Live</span>
       </h1>
-      <h2 className="text-3xl text-muted-foreground [font-variant:small-caps]">
+      <h2 className="text-2xl sm:text-3xl text-muted-foreground [font-variant:small-caps]">
         Make Any List You Want
       </h2>
     </main>
