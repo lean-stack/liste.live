@@ -11,13 +11,13 @@ export function ThemeToggle() {
 
   return (
     <Button
-      className="overflow-hidden px-2"
+      className="px-2"
       variant="ghost"
       size="sm"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
     >
-      <Icon.Sun className="origin-[50%_100px] rotate-0 transition-transform duration-500 dark:-rotate-90" />
-      <Icon.Moon className="absolute origin-[50%_100px] rotate-90 transition-transform duration-500 dark:rotate-0" />
+      <Icon.Sun className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Icon.Moon className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Hell-/Dunkel-Modus umschalten</span>
     </Button>
   );
