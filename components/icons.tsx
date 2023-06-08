@@ -1,9 +1,9 @@
-import { List, Moon,  SunMedium, type LucideIcon } from "lucide-react";
+import { List, MoonStar, Sun, type LucideIcon } from "lucide-react";
 
 export type Icon = LucideIcon;
 
 export const Icon = {
     List,
-    Moon,
-    Sun: SunMedium
+    Moon: MoonStar,
+    Sun
 }

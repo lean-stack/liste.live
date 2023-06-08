@@ -1,4 +1,5 @@
 import { Icon } from "@/components/icons";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { Roboto_Slab } from "next/font/google";
 
@@ -6,6 +7,10 @@ const robotoSlab = Roboto_Slab({ subsets: ["latin"] });
 
 export default function Home() {
   return (
+    <>
+    <div className="absolute right-2 top-2">
+      <ThemeToggle />
+    </div>
     <main
       className={cn(
         "min-h-screen flex flex-col justify-center items-center gap-y-8",
@@ -23,5 +28,6 @@ export default function Home() {
         Make Any List You Want
       </h2>
     </main>
+    </>
   );
 }
