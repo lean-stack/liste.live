@@ -38,7 +38,7 @@ export function SubmissionForm({
   });
 
   async function onSubmit(values: z.infer<typeof Submission>) {
-    startSaving(() => saveSubmission(listId, submitterId, values));
+    startSaving(() => saveSubmission(listId, values));
   }
 
   return (
@@ -88,7 +88,7 @@ export function SubmissionForm({
         />
         <div className="text-right">
           <Button variant="secondary" type="submit">
-            Eintragen
+            {isSaving ? 'Absenden ...' : 'Beitragen'}
           </Button>
         </div>
       </form>
