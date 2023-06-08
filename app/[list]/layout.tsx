@@ -1,31 +1,29 @@
+import { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 
-import { db, modelConverter } from '@/lib/firebase';
+import { get } from '@/lib/firebase/collection';
 import { List } from '@/lib/model/list';
 import { ThemeToggle } from '@/components/theme-toggle';
 
-type ListPageProps = {
+type ListLayoutProps = {
   params: {
     list: string;
   };
+  children: ReactNode;
 };
 
-export const revalidate = 60;
-
 async function getListData(listId: string) {
-  const listSnapshot = await db
-    .doc(`lists/${listId}`)
-    .withConverter(modelConverter<List>())
-    .get();
+  const list = await get<List>('lists', listId);
 
   return {
-    list: listSnapshot.data(),
+    list,
   };
 }
 
-export default async function ListPage({
+export default async function ListLayout({
   params: { list: listId },
-}: ListPageProps) {
+  children,
+}: ListLayoutProps) {
   const { list } = await getListData(listId);
 
   if (!list) {
@@ -42,6 +40,12 @@ export default async function ListPage({
           </div>
         </div>
       </header>
+      <main className="container mt-6 space-y-6">
+        <h2 className="text-xl font-semibold">
+          Wer kommt, wer bringt was mit?
+        </h2>
+        {children}
+      </main>
     </div>
   );
 }
