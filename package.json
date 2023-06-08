@@ -2,7 +2,11 @@
   "name": "liste.live",
   "description": "Make Any List You Want",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lean-stack/liste.live.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -24,6 +28,7 @@
     "@types/react": "18.2.8",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "changelogen": "^0.5.3",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "eslint": "8.42.0",
