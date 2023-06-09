@@ -86,9 +86,9 @@ export function SubmissionView({
           </p>
           <a
             className="text-sm underline"
-            href={`${window.location.origin}${pathname}`}
+            href={`https://liste.live${pathname}`}
           >
-            {`${window.location.origin}${pathname}`}
+            {`https://liste.live${pathname}`}
           </a>
         </CardFooter>
       )}
