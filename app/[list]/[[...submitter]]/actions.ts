@@ -6,7 +6,11 @@ import { create, update } from '@/lib/firebase/collection';
 import { Submission } from '@/lib/model/submission';
 import { Submitter } from '@/lib/model/submitter';
 
-export async function saveSubmission(listId: string, submission: Submission) {
+export async function saveSubmission(
+  listId: string,
+  submitterId: string,
+  submission: Submission
+) {
   if (submission.id) {
     await update(`lists/${listId}/submissions`, submission);
   } else {
@@ -18,6 +22,7 @@ export async function saveSubmission(listId: string, submission: Submission) {
       `lists/${listId}/submitters`,
       { submissionId: createdSubmission.id }
     );
-    redirect(`/${listId}/${createdSubmitter.id}`);
+    submitterId = createdSubmitter.id;
   }
+  return submitterId;
 }

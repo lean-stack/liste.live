@@ -1,6 +1,8 @@
 'use client';
 
-import { useTransition } from 'react';
+import { useState } from 'react';
+import { revalidatePath } from 'next/cache';
+import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -30,7 +32,8 @@ export function SubmissionForm({
   submitterId,
   submission,
 }: SubmissionFormProps) {
-  const [isSaving, startSaving] = useTransition();
+  const router = useRouter();
+  const [isSaving, setSaving] = useState(false);
 
   const form = useForm<z.infer<typeof Submission>>({
     resolver: zodResolver(Submission),
@@ -38,12 +41,15 @@ export function SubmissionForm({
   });
 
   async function onSubmit(values: z.infer<typeof Submission>) {
-    startSaving(() => saveSubmission(listId, values));
+    setSaving(true);
+    submitterId = await saveSubmission(listId, submitterId, values);
+    router.replace(` ${listId}/${submitterId}`);
+    setSaving(false);
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="name"

@@ -21,6 +21,8 @@ type ListPageProps = {
   };
 };
 
+export const revalidate = 0;
+
 async function getSubmissions(listId: string) {
   const submissions = await getAll<Submission>(`lists/${listId}/submissions`);
   return submissions;
