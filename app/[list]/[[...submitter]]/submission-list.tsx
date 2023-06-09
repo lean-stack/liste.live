@@ -3,7 +3,6 @@ import { Card } from '@/components/(ui)/card';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -15,20 +14,19 @@ type SubmissionListProps = {
 };
 
 export function SubmissionList({ submissions }: SubmissionListProps) {
-  console.log(submissions);
   return (
     <Card>
       <Table>
         <TableHeader>
-          <TableRow className="bg-secondary">
+          <TableRow>
             <TableHead className="py-4 font-semibold text-foreground">
-              Name des Kindes
+              Name
             </TableHead>
             <TableHead className="font-semibold text-foreground">
               Wir bringen mit
             </TableHead>
             <TableHead className="font-semibold text-foreground">
-              Anzahl Personen
+              Personen
             </TableHead>
           </TableRow>
         </TableHeader>
