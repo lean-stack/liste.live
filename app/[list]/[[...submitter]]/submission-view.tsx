@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 import { Submission } from '@/lib/model/submission';
 import { Button } from '@/components/(ui)/button';
@@ -28,6 +29,7 @@ export function SubmissionView({
   submission,
 }: SubmissionViewProps) {
   const [isEditMode, setEditMode] = useState(!submitterId);
+  const pathname = usePathname();
 
   return (
     <Card className="md:grid md:grid-cols-3">
@@ -82,8 +84,11 @@ export function SubmissionView({
             Ihr könnt Eure Angaben jederzeit ändern. Fügt dazu jetzt diese Seite
             zu Euren Lesezeichen hinzu oder speichert/teilt folgenden Link:
           </p>
-          <a className="text-sm underline" href={window.location.toString()}>
-            {window.location.toString()}
+          <a
+            className="text-sm underline"
+            href={`${window.location.origin}${pathname}`}
+          >
+            {`${window.location.origin}${pathname}`}
           </a>
         </CardFooter>
       )}
