@@ -3,16 +3,9 @@ import { notFound } from 'next/navigation';
 import { get, getAll } from '@/lib/firebase/collection';
 import { Submission } from '@/lib/model/submission';
 import { Submitter } from '@/lib/model/submitter';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/(ui)/card';
 
-import { SubmissionForm } from './submission-form';
 import { SubmissionList } from './submission-list';
+import { SubmissionView } from './submission-view';
 
 type ListPageProps = {
   params: {
@@ -62,22 +55,12 @@ export default async function ListPage({
 
   return (
     <div className="space-y-6">
-      <Card className="md:grid md:grid-cols-3">
-        <CardHeader className="md:col-span-1">
-          <CardTitle>Unser Beitrag</CardTitle>
-          <CardDescription>
-            Eure Angaben können auch wieder geändert werden.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="md:col-span-2 md:pt-6">
-          <SubmissionForm
-            listId={listId}
-            submitterId={submitterId}
-            submission={submission}
-          />
-        </CardContent>
-      </Card>
-      <SubmissionList submissions={submissions} />
+      <SubmissionView
+        listId={listId}
+        submitterId={submitterId}
+        submission={submission}
+      />
+      {submissions.length > 0 && <SubmissionList submissions={submissions} />}
     </div>
   );
 }

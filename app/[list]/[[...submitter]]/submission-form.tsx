@@ -1,7 +1,4 @@
-'use client';
-
 import { useState } from 'react';
-import { revalidatePath } from 'next/cache';
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -25,12 +22,14 @@ type SubmissionFormProps = {
   listId: string;
   submitterId: string;
   submission: Submission;
+  onAction: () => void;
 };
 
 export function SubmissionForm({
   listId,
   submitterId,
   submission,
+  onAction,
 }: SubmissionFormProps) {
   const router = useRouter();
   const [isSaving, setSaving] = useState(false);
@@ -45,6 +44,7 @@ export function SubmissionForm({
     submitterId = await saveSubmission(listId, submitterId, values);
     router.replace(` ${listId}/${submitterId}`);
     setSaving(false);
+    onAction();
   }
 
   return (
@@ -92,10 +92,15 @@ export function SubmissionForm({
             </FormItem>
           )}
         />
-        <div className="text-right">
-          <Button variant="secondary" type="submit">
+        <div className="space-x-4">
+          <Button variant="default" type="submit">
             {isSaving ? 'Absenden ...' : 'Beitragen'}
           </Button>
+          {!!submitterId && (
+            <Button onClick={onAction} variant="secondary">
+              Abbrechen
+            </Button>
+          )}
         </div>
       </form>
     </Form>
